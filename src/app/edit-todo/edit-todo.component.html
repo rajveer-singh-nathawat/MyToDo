@@ -1,0 +1,18 @@
+<!-- <h1>Todo</h1> -->
+<div class="container">
+  <form [formGroup]="todoForm" (ngSubmit)="saveTodo()">
+    <fieldset class="form-group">
+      <label>Description</label>
+      <input type="text" formControlName="description" class="form-control">
+    </fieldset>
+    <fieldset>
+      <label>Targate Date</label>
+      <input type="date" formControlName="targateDate" class="form-control">
+    </fieldset>
+    <fieldset>
+      <label>Is Done?</label>
+      <input type="text" formControlName="isDone" class="form-control">
+    </fieldset>
+    <button class="submit" class="btn btn btn-success">Save</button>
+  </form>
+</div>

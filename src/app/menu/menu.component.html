@@ -1,0 +1,14 @@
+<header>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div><a routerLink="/login" *ngIf="!auth.isUserLogin()" class="navbar navbar-brand">MyToDo</a></div>
+    <div> <a routerLink="/welcome/Rajveer" *ngIf="auth.isUserLogin()" class="navbar navbar-brand">MyToDo</a></div>
+    <ul class="navbar-nav">
+      <li><a routerLink="/welcome/Rajveer" *ngIf="auth.isUserLogin()" class="nav-link">Home</a></li>
+      <li> <a routerLink="/todo" *ngIf="auth.isUserLogin()" class="nav-link">ToDo's</a></li>
+    </ul>
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+      <li><a routerLink="/login" *ngIf="!auth.isUserLogin()" class="nav-link">Login</a></li>
+      <li> <a routerLink="/logout" *ngIf="auth.isUserLogin()" class="nav-link">Logout</a></li>
+    </ul>
+  </nav>
+</header>
