@@ -1,6 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../service/auth.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
+export class User{
+  constructor(
+    public username : string,
+    public password : string
+  ){
+
+  }
+}
 
 @Component({
   selector: 'app-login',
@@ -8,24 +17,38 @@ import { AuthService } from '../service/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  username='rajveer'
-  passdword=''
+  user : User
+  loginForm: FormGroup
+  
   isLogin=false
 
   constructor(private router:Router,
-    private auth:AuthService) { }
+    private auth:AuthService,
+    private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.initForm();
   }
+  // this.auth.authenticate(this.user.username,this.user.password) && 
   handleLogin(){
-    if(this.auth.authenticate(this.username,this.passdword))
+    this.user=this.loginForm.value;
+    if(this.auth.authenticate(this.user.username,this.user.password))
     {
-      this.router.navigate(['welcome',this.username])
-      return this.isLogin=false;
+      this.isLogin=false;
+      this.router.navigate(['welcome',this.user.username])
+      
     }
     else{
-      return this.isLogin=true;
+      
+     this.isLogin=true;
     }
+  }
+  initForm(){
+    this.loginForm=this.fb.group({
+      username : ['rajveer'],
+      password: ['']
+    })
+
   }
 
 }

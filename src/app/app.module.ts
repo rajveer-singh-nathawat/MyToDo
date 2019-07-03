@@ -14,6 +14,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { HttpClientModule } from '@angular/common/http';
 import { EditTodoComponent } from './edit-todo/edit-todo.component';
 import { DatePipe } from '@angular/common';
+import { httpInterceptorProviders } from './http-interceptors';
+
 
 
 
@@ -36,7 +38,10 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [DatePipe],
+  providers: [
+    httpInterceptorProviders,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

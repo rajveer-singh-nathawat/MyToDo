@@ -3,12 +3,17 @@ import { Http2SecureServer } from 'http2';
 import { HttpClient } from '@angular/common/http';
 import { ToDo } from 'src/app/todo/todo.component';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class ToDoDataService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+    ) { }
+
+
   getAllToDosWithUserName(username){
     return this.http.get<ToDo[]>(`http://localhost:8080/users/${username}/todos`);
   }
